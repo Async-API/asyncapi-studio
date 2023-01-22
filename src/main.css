@@ -113,3 +113,7 @@
 .tippy-box[data-placement^="right"] > .tippy-arrow:before {
   border-right-color: rgba(17, 24, 39) !important;
 }
+
+#root .flex.items-center {
+  display: none;
+}
