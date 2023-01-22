@@ -17,7 +17,7 @@ function getFileLoaderRule(rules) {
   throw new Error("File loader not found");
 }
 
-function configureWebpack(webpackConfig) {
+function configureWebpack(webpackConfig, { env, paths }) {
   // fallbacks
   const fallback = webpackConfig.resolve.fallback || {};
   Object.assign(fallback, {
@@ -58,6 +58,10 @@ function configureWebpack(webpackConfig) {
 
   // ignore source-map warnings 
   webpackConfig.ignoreWarnings = [...(webpackConfig.ignoreWarnings || []), /Failed to parse source map/];
+
+  if(env === 'production') {
+    webpackConfig.output.publicPath = '/asyncapi-studio/';
+  }
 
   return webpackConfig;
 }
